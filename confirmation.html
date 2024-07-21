@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,28 +18,34 @@
       crossorigin="anonymous"
     ></script>
     <style>
-      body, html {
-        height: 100%;
-        margin: 0;
-        padding: 0;
+      #timer {
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #fff;
+        color: #000;
+        padding: 5px 10px;
+        border-radius: 5px;
       }
-
-      .container {
-        max-width: 400px;
-        height: auto;
-        overflow: hidden;
-      }
-
-      #total, #remaining {
-        min-height: 24px; /* Adjust this value based on your font size */
+      #notification {
+        display: none;
+        position: fixed;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border-radius: 5px;
       }
     </style>
   </head>
   <body
     class="d-flex align-items-center justify-content-center vh-100 bg-dark text-white"
   >
-    <div
-      class="container p-4 border rounded bg-secondary mx-3"
+    <div id="inside"
+      class="container p-4 border rounded bg-secondary position-relative"
       style="max-width: 400px"
     >
       <h4 class="text-center mb-4">हिसाब पुनः जाँच लें</h4>
@@ -62,21 +70,11 @@
         <button id="edit" class="btn btn-warning">हिसाब Edit करे</button>
         <button id="confirm" class="btn btn-success">जमा करे</button>
       </div>
+      <div id="timer">00:00</div>
     </div>
 
-    <!-- Add this div somewhere in your HTML file -->
     <div
       id="notification"
-      style="
-        display: none;
-        position: fixed;
-        top: 100px;
-        
-        padding: 10px;
-        background-color: #4caf50;
-        color: white;
-        border-radius: 5px;
-      "
     >
       हिसाब जमा हो गया है!
     </div>
