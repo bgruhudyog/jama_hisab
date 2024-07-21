@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   const notification = document.getElementById("notification");
                   notification.style.display = "block"; // Show the notification
                   setTimeout(() => {
-                    window.location.href = "Google Sheet.html"; // Redirect after 3 seconds
+                    window.location.href = "index.html"; // Redirect after 3 seconds
                   }, 3000); // 3000 milliseconds = 3 seconds
                 } else {
                   throw new Error("Telegram API response was not ok.");
