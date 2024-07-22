@@ -1,3 +1,9 @@
+
+//           // Send data to Telegram
+//           const telegramToken = "7438673598:AAEScuKPGsJAGn5fFiXavF_2vH-fNfSBQVg";
+//           const chatId = "-1002230132257"; // Replace with your chat ID
+//           const telegramURL = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+
 document.addEventListener("DOMContentLoaded", function () {
   const route = localStorage.getItem("dropdown");
   const shopName = localStorage.getItem("shop_name");
@@ -22,7 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const cashAmount = parseFloat(cash);
   const remaining = totalAmount - cashAmount;
 
-  document.getElementById("confirm-remaining").textContent = remaining.toFixed(2);
+  document.getElementById("confirm-remaining").textContent =
+    remaining.toFixed(2);
 
   document.getElementById("edit").addEventListener("click", function () {
     window.history.back();
@@ -33,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document.getElementById("confirm").addEventListener("click", function () {
-    const scriptURL = "https://script.google.com/macros/s/AKfycbw7r8EkmflipZKr6BS2ZqpiPEPQqVswPF3s6Uk78Jb_2fcw3Fsz7k8jQjudXBCnPuDzdA/exec";
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbw7r8EkmflipZKr6BS2ZqpiPEPQqVswPF3s6Uk78Jb_2fcw3Fsz7k8jQjudXBCnPuDzdA/exec";
     const formData = new FormData();
 
     formData.append("दिनांक ", date); // Add today's date to form data
@@ -46,6 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("आज के बाक़ी", remaining.toFixed(2));
     formData.append("पुराने जमा ", old);
 
+    // Disable the confirm button
+    document.getElementById("confirm").disabled = true;
+
     // Start the timer
     startTimer();
 
@@ -54,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         if (response.ok) {
           // Send data to Telegram
-          const telegramToken = "7438673598:AAEScuKPGsJAGn5fFiXavF_2vH-fNfSBQVg";
-          const chatId = "-1002230132257"; // Replace with your chat ID
+          const telegramToken = "YOUR_TELEGRAM_BOT_TOKEN";
+          const chatId = "YOUR_CHAT_ID"; // Replace with your chat ID
           const telegramURL = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
 
           let message = "";
@@ -119,8 +130,50 @@ document.addEventListener("DOMContentLoaded", function () {
       let elapsedTime = Date.now() - startTime;
       let seconds = Math.floor((elapsedTime / 1000) % 60);
       let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
-      let formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      let formattedTime = `${String(minutes).padStart(2, "0")}:${String(
+        seconds
+      ).padStart(2, "0")}`;
       timerElement.textContent = formattedTime;
+
+      if (elapsedTime >= 10000) {
+        // 10 seconds
+        clearInterval(timerInterval);
+
+        const confirmButton = document.getElementById("confirm");
+        confirmButton.disabled = true;
+
+        const copyButton = document.createElement("button");
+        copyButton.id = "copy";
+        copyButton.className = "btn btn-primary btn-lg";
+        copyButton.textContent = "Copy Text";
+        confirmButton.replaceWith(copyButton);
+
+        copyButton.addEventListener("click", function () {
+          let textToCopy = `
+          दिनांक: ${date}\n
+          दुकान का नाम: ${shopName}\n
+          मात्रा: ${quantity} Kg\n
+          रेट: ₹${rate}\n
+          कुल: ₹${total}\n
+          नगदी: ₹${cash}\n
+          आज के बाकी: ₹${remaining.toFixed(2)}\n
+          पुराने जमा: ₹${old}
+          `;
+          navigator.clipboard
+            .writeText(textToCopy)
+            .then(() => {
+              const copyNotification =
+                document.getElementById("copy-notification");
+              copyNotification.style.display = "block";
+              setTimeout(() => {
+                copyNotification.style.display = "none";
+              }, 3000); // Hide notification after 3 seconds
+            })
+            .catch((error) => {
+              console.error("Error copying text: ", error);
+            });
+        });
+      }
     }, 1000);
   }
 
