@@ -150,14 +150,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         copyButton.addEventListener("click", function () {
           let textToCopy = `
-          दिनांक: ${date}\n
-          दुकान का नाम: ${shopName}\n
-          मात्रा: ${quantity} Kg\n
-          रेट: ₹${rate}\n
-          कुल: ₹${total}\n
-          नगदी: ₹${cash}\n
-          आज के बाकी: ₹${remaining.toFixed(2)}\n
-          पुराने जमा: ₹${old}
+दिनांक: ${date}\n
+दुकान का नाम: ${shopName}\n
+मात्रा: ${quantity} Kg\n
+रेट: ₹${rate}\n
+कुल: ₹${total}\n
+नगदी: ₹${cash}\n
+आज के बाकी: ₹${remaining.toFixed(2)}\n
+पुराने जमा: ₹${old}
           `;
           navigator.clipboard
             .writeText(textToCopy)
