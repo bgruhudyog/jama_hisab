@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const copyButton = document.createElement("button");
         copyButton.id = "copy";
         copyButton.className = "btn btn-primary btn-lg";
-        copyButton.textContent = "Copy Text";
+        copyButton.textContent = "हिसाब कॉपी करे";
         confirmButton.replaceWith(copyButton);
 
         copyButton.addEventListener("click", function () {
