@@ -24,8 +24,8 @@
             box-sizing: border-box;
         }
         .bganimated{
-            height: 100vh;
-            width: 100%;
+            /* height: 500px; */
+            /* width: 100%; */
             background: linear-gradient(45deg,rgb(75, 72, 72),rgb(0, 0, 0));
             background-size: 300% 300%;
             animation: color 12s ease-in-out infinite;
@@ -66,13 +66,14 @@
         color: white;
         border-radius: 5px;
       }
+      
     </style>
   </head>
   <body
-    class="d-flex align-items-center justify-content-center vh-100 bg-dark text-white bganimated"
+    class="d-flex align-items-center justify-content-center vh-100 bg-dark text-white "
   >
     <div id="inside"
-      class="container p-4 border rounded bg-secondary position-relative mx-3"
+      class="container p-4 border rounded-4 bganimated  position-relative mx-3"
       style="max-width: 400px"
     >
       <h4 class="text-center mb-4">हिसाब पुनः जाँच लें</h4>
@@ -93,9 +94,9 @@
 
       <p><strong>पुराने जमा:</strong> <span id="confirm-old"></span> ₹</p>
 
-      <div class="d-flex justify-content-between mt-4">
-        <button id="edit" class="btn btn-warning">हिसाब Edit करे</button>
-        <button id="confirm" class="btn btn-success">जमा करे</button>
+      <div class="d-flex justify-content-between mt-5">
+        <button id="edit" class="btn btn-outline-light">हिसाब Edit करे</button>
+        <button id="confirm" class="btn btn-success btn-lg">जमा करे</button>
       </div>
       <div id="timer">00:00</div>
     </div>
