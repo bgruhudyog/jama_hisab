@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const month = today.getMonth() + 1;
     const year = today.getFullYear();
     const dayInHindi = getDayInHindi(day);
-    dateDayDisplay.textContent = ` ${date}-${month}-${year},  ${dayInHindi}`;
+    dateDayDisplay.textContent = ` ${date}-${month}-${year} , ${dayInHindi} `;
     return `${date}-${month}-${year}`;
   }
 
